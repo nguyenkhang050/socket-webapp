@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <!-- Add bootstrap and others -->
+    <script src="/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/bootstrap/js/popper.min.js"></script>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src='/socket/socket.io/socket.io.js'></script>
+    <form id="send-container">
+        <input type="text" id="message-input">
+        <button type="submit" id="send-button">Send</button>
+    </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Robot Monitoring</a>
+        <div class="container-fluid">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#robot1-tab">Robot 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#robot2-tab">Robot 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#robot3-tab">Robot 3</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <div class="container-fluid" width="100%" height="100%>
+            <div class="tab-content">
+                <div id="robot1-tab" class="tab-pane fade show active">
+                    <!-- <% include ./scara.ejs %> -->
+                    <object type="text/html" data="scara.ejs" style="height: 1000px; width: 100%"></object>
+                    <h2>robot1</h2>
+                </div>
+                <div id="robot2-tab" class="tab-pane fade">
+                  <object type="text/html" data="delta1.ejs" style="height: 1000px; width: 100%"></object>
+                    <!-- <% include ./delta1.ejs %> -->
+                    <h2>robot2</h2>
+                </div>
+                <div id="robot3-tab" class="tab-pane fade">
+                    <!-- Content for Robot 3 Tab -->
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.thumbnail {
+  height: 50px;
+  width: 50px;
+  border-radius: 19px;
+}
+
+.card {
+  border-radius: 19px;
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+}
+
+.selectdiv {
+  display: block;
+  font-size: 16px;
+  width: 200px;
+  height: 50px;
+  /*   margin: 20px 20px 20px 20px; */
+  /*     border-style: solid */
+}
+
+.select-content {
+  /*   position: absolute; */
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.0);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.button {
+  display: block;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.button-jog {
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  margin: 5px
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+form h2 {
+  margin-bottom: 20px;
+}
+
+form .form-group {
+  margin-bottom: 20px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input[type="text"], form input[type="password"] {
+  border-radius: 0;
+}
+
+form button[type="submit"] {
+  border-radius: 0;
+}
+.tab-pane {
+  position: absolute;
+  top: 200px;
+  width: 100%
+}
+
+</style>

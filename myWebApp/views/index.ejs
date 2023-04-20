@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<hr>
+
+
+<!-- Add bootstrap and others -->
+<!-- <link href="F:\multi-robot-webapp\myWebApp\bootstrap\css\customstyle.css" rel="stylesheet" type="text/css" /> -->
+<script src="/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/bootstrap/js/popper.min.js"></script>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src='/socket/socket.io/socket.io.js'></script>
+
+<html>
+<head>
+    <title>Login</title>
+    <!--<script src="https://cdn.socket.io/socket.io-4.0.1.min.js"></script>-->
+    <script src='/socket.io/socket.io.js'></script>
+</head>
+<body>
+
+    <h1>Login</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <h2 class="text-center">Login</h2>
+                <form id="send-container">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<form id="send-container">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Log in</button>
+        </div>
+    </form>-->
+    <div id="error-message" style="color: red;"></div>
+    <script>
+        const socket = io.connect('http://localhost:3700');
+        const loginForm = document.getElementById('send-container');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        loginForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+            socket.emit("login", { username, password });
+            console.log("username: " + username + "; password: ", + password)
+        })
+
+        socket.on("login-response", function (data) {
+            if (data.success) {
+                window.location.href = "/vas";
+            } else {
+                $("#error-message").text(data.message);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
