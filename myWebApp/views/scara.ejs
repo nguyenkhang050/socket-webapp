@@ -9,11 +9,11 @@
 
     <!-- Add bootstrap and others -->
     <!-- <link href="F:/multi-robot-webapp/myWebApp/public/stylesheets/style.css" rel="stylesheet" type="text/css" /> -->
-    <script src="/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/bootstrap/js/popper.min.js"></script>
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src='/socket/socket.io/socket.io.js'></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='/socket.io/socket.io.js'></script>
     <!--<form id="send-container">
         <input type="text" id="message-input">
         <button type="submit" id="send-button">Send</button>
@@ -210,8 +210,8 @@
 
     const messages = [];
 
-    const socket = io.connect('http://localhost:3700');
-
+    // const socket = io.connect('http://localhost:3700');
+    const socket = io();
     socket.on('temp', function (data) {
         //console.log("changed");
         const x_text = document.getElementById("xText");
